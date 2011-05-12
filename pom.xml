@@ -1,17 +1,19 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
 		                     http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.mgm.portlet</groupId>
-	<artifactId>scalaportlet</artifactId>
-	<version>1.0-SNAPSHOT</version>
-	<name>Scala Portlet</name>
-	<packaging>war</packaging>
-	
- <properties>
+    
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>de.mgm.portlet</groupId>
+    <artifactId>scalaportlet</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>Scala Portlet</name>
+    <packaging>war</packaging>
+
+    <properties>
         <scala.version>2.8.0.Beta1-RC7</scala.version>
         <org.springframework.version>3.0.0.RELEASE</org.springframework.version>
+        <servlet-version>2.5</servlet-version>
     </properties>
 
     <repositories>
@@ -30,43 +32,51 @@
             <name>EBR External Release Repository</name>
             <url>http://repository.springsource.com/maven/bundles/external</url>
         </repository>
-    </repositories>		                     
+    </repositories>
 
-  <pluginRepositories>
+    <pluginRepositories>
         <pluginRepository>
             <id>scala-tools.org</id>
             <name>Scala-Tools Maven2 Repository</name>
             <url>http://scala-tools.org/repo-releases</url>
         </pluginRepository>
-
     </pluginRepositories>
 
 
     <dependencies>
-            <dependency>
+        <!-- Portlet stuff -->
+        <dependency>
+            <groupId>javax.portlet</groupId>
+            <artifactId>portlet-api</artifactId>
+            <version>2.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${servlet-version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+        <!-- Scala -->
+        <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-compiler</artifactId>
             <version>${scala.version}</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
             <version>${scala.version}</version>
         </dependency>
 
+        <!-- Test -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>3.8.1</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.portlet</groupId>
-            <artifactId>portlet-api</artifactId>
-            <version>2.0</version>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
     <build>
@@ -76,6 +86,7 @@
             <plugin>
                 <groupId>org.scala-tools</groupId>
                 <artifactId>maven-scala-plugin</artifactId>
+                <version>2.15.2</version>
                 <executions>
                     <execution>
                         <goals>
