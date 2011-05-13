@@ -1,0 +1,10 @@
+#IDE specific
+scalaportlet.iml
+
+#Project files (for inplace development)
+/src/main/webapp/WEB-INF/classes
+/src/main/webapp/WEB-INF/lib
+/src/main/webapp/WEB-INF/tld
+
+#For maven build
+/target
