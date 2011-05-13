@@ -5,6 +5,10 @@ package de.mgm.tests.portlet
 import javax.portlet.{GenericPortlet => JavaPortlet}
 import javax.portlet.RenderRequest
 import javax.portlet.RenderResponse
+import scala.collection.mutable.HashMap
+
+// Implizite Conversion zwischen Java und scala :D
+import collection.JavaConversions._
 
 class ScalaPortlet extends JavaPortlet {
     override def doView(request: RenderRequest, response: RenderResponse) = {
@@ -31,7 +35,16 @@ class ScalaPortlet extends JavaPortlet {
             </div>.toString)
     }
 
-      override def  processAction(request: RenderRequest, response: RenderResponse) = {
-        println("++++ request recieved ++++")
+      override def processAction(request: javax.portlet.ActionRequest, response: javax.portlet.ActionResponse) = {
+        println("++++ request recieved ++++");
+        println("++++ Parameter ++++");
+
+
+        request.getParameterMap  foreach  {
+          case (key, value) => {
+              println (key + " :" )
+              println (request.getParameter(key))
+          }
+        }
   }
 }
