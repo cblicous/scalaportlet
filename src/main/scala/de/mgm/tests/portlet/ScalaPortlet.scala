@@ -30,5 +30,7 @@ class ScalaPortlet extends JavaPortlet {
             </div>.toString)
     }
 
-
+      override def  processAction(request: RenderRequest, response: RenderResponse) = {
+        println("++++ request recieved ++++")
+  }
 }
