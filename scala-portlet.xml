@@ -1,0 +1,5 @@
+<Context
+    reloadable="true"
+    path="scala-portlet"
+    docBase="C:/work/development/dev-projects/scalaportlet-helloworld121/src/main/webapp"
+/>

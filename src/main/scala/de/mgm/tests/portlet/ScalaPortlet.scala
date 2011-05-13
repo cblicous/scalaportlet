@@ -10,7 +10,8 @@ class ScalaPortlet extends JavaPortlet {
     override def doView(request: RenderRequest, response: RenderResponse) = {
 
         println("+++++++++ doView +++++++++")
-      
+        println("+++++++++ hello +++++++++")
+
 
         response.setTitle("Scala Test Portlet")
         response.getWriter().write(
