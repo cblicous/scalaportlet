@@ -14,6 +14,9 @@
         <scala.version>2.8.0.Beta1-RC7</scala.version>
         <org.springframework.version>3.0.0.RELEASE</org.springframework.version>
         <servlet-version>2.5</servlet-version>
+
+        <!-- the default environment -->
+	    <env>dev</env>
     </properties>
 
     <repositories>
@@ -32,6 +35,11 @@
             <name>EBR External Release Repository</name>
             <url>http://repository.springsource.com/maven/bundles/external</url>
         </repository>
+        <repository>
+            <id>apache-maven</id>
+            <name>Apache Maven repository</name>
+            <url>http://repo1.maven.org/maven2</url>
+        </repository>
     </repositories>
 
     <pluginRepositories>
@@ -39,6 +47,11 @@
             <id>scala-tools.org</id>
             <name>Scala-Tools Maven2 Repository</name>
             <url>http://scala-tools.org/repo-releases</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>apache-maven</id>
+            <name>Apache Maven repository</name>
+            <url>http://repo1.maven.org/maven2</url>
         </pluginRepository>
     </pluginRepositories>
 
@@ -99,6 +112,7 @@
                     <scalaVersion>${scala.version}</scalaVersion>
                 </configuration>
             </plugin>
+            <!--
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-eclipse-plugin</artifactId>
@@ -116,9 +130,18 @@
                     </classpathContainers>
                 </configuration>
             </plugin>
+            -->
+            <!--
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
+            </plugin>
+            -->
+            <!-- mvn compile war:inplace -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.1.1</version>
             </plugin>
         </plugins>
     </build>
@@ -127,6 +150,7 @@
             <plugin>
                 <groupId>org.scala-tools</groupId>
                 <artifactId>maven-scala-plugin</artifactId>
+                <version>2.15.2</version>
                 <configuration>
                     <scalaVersion>${scala.version}</scalaVersion>
                 </configuration>
